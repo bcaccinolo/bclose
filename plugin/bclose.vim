@@ -69,4 +69,7 @@ function! s:Bclose(bang, buffer)
   execute wcurrent.'wincmd w'
 endfunction
 command! -bang -complete=buffer -nargs=? Bclose call <SID>Bclose('<bang>', '<args>')
-nnoremap <silent> <Leader>bd :Bclose<CR>
+
+if !exists("g:bclose_no_default_mapping")
+  nnoremap <silent> <Leader>bd :Bclose<CR>
+endif
